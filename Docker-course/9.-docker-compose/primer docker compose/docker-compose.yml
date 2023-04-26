@@ -1,0 +1,27 @@
+version: '3.9'
+services:
+  db:
+    image: mysql:8.0
+    container_name: my-mysql
+    restart: always
+    environment:
+      MYSQL_DATABASE: mydb
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+      MYSQL_ROOT_PASSWORD: rootpassword
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+  web:
+    image: php:8.0-apache
+    container_name: my-web
+    restart: always
+    ports:
+      - "80:80"
+    depends_on:
+      - db
+    volumes:
+      - ./web:/var/www/html
+volumes:
+  mysql-data:

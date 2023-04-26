@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Listado de la API</title>
+</head>
+<body>
+    <h1>Listado de la API</h1>
+    <ul id="listado"></ul>
+
+    <script>
+        fetch('http://localhost:8090/platillos/getPlatillos')
+            .then(response => response.json())
+            .then(data => {
+                const listadoEl = document.querySelector('#listado');
+                data.forEach(item => {
+                    const liEl = document.createElement('li');
+                    liEl.textContent = item.nombre;
+                    listadoEl.appendChild(liEl);
+                });
+            });
+    </script>
+</body>
+</html>
