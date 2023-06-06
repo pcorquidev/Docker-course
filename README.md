@@ -1,2 +1,2 @@
 # Docker-course
-This is material for the docker introduction course 
+This material is for the docker introduction course
